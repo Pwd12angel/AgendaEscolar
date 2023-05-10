@@ -1,0 +1,38 @@
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">EDUCATEC</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav  ms-auto">
+          <%if (user){ %>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+            </li>
+            <!--
+            <li class="nav-item">
+              <a class="nav-link" href="/usuarios">Usuarios</a>
+            </li>
+          -->
+            <li class="nav-item">
+              <a class="nav-link" href="/organizar">Organizar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Exit</a>
+            </li>
+          <% } else {%>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Signin">SignIn</a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>

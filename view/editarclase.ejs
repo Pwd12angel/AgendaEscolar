@@ -1,0 +1,54 @@
+<%- include('temp/cabecera'); %>
+    <% clase.forEach(function(clase){%>
+        <style>
+            .editarcontenedor {
+                background-color: #dadada;
+                padding: 20px;
+                margin-right: 25%;
+                margin-left: 25%;
+                margin-top: 10%;
+            }
+
+            .seccion {
+                height: 1000px;
+            }
+        </style>
+        <section class="seccion">
+            <div class="editarcontenedor">
+                <h2>Datos a modificar</h2>
+                <form action="/editarclase/<%=clase._id%>" method="POST">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Nombre de la clase</label>
+                        <input type="Titulo" name="nombreclase" value="<%=clase.nombreclase %> " class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Nombre del profesor</label>
+                        <input type="text" name="profesor" value="<%=clase.profesor%>" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-sm-3">
+                            <label for="exampleInputPassword1" class="form-label">Hora</label>
+                            <input type="String" name="hora" value="<%=clase.hora%>" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-2 col-sm-9">
+                            <label for="exampleInputPassword1" class="form-label">Dia</label>
+                            <input type="String" name="dia" value="<%=clase.dia%>" class="form-control" id="exampleInputPassword1">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-sm-3">
+                            <label for="exampleInputPassword1" class="form-label">Edificio</label>
+                            <input type="String" name="edificio" value="<%=clase.edificio%>"  class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-2 col-sm-9">
+                            <label for="exampleInputPassword1" class="form-label">Aula</label>
+                            <input type="String" name="aula" value="<%=clase.aula%>" class="form-control" id="exampleInputPassword1">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+                <% }) %>
+            </div>
+        </section>
+        <%- include('temp/footer'); %>

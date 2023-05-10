@@ -1,0 +1,34 @@
+<%- include('temp/cabecera'); %>
+<div class="container">
+    <table class="table table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Carrera</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            <% if (arrayUsuarios.length > 0) { %>
+
+                <% arrayUsuarios.forEach(usuario => { %>
+
+                    <tr>
+                        <th scope="row"><%= usuario.id %> </th>
+                        <td><%= usuario.numero %></td>
+                        <td><%= usuario.contrasena %></td>
+                        <td><%= usuario.nombre %></td>
+                        <td>@mdo</td>
+                      </tr>
+
+                <% }) %>
+
+               <% } %>
+
+        </tbody>
+      </table>
+ </div>
+<%- include('temp/footer'); %>

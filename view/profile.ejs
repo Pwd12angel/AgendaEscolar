@@ -1,0 +1,271 @@
+<%- include('temp/cabecera'); %>
+    <style>
+        .profile-head {
+            transform: translateY(5rem)
+        }
+
+        .cover {
+            background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
+            background-size: cover;
+            background-repeat: no-repeat
+        }
+
+
+        body {
+            background-color: rgb(243, 243, 243);
+            min-height: 100%;
+            overflow-x: auto;
+
+
+        }
+
+        .contenedor {
+            padding: 10px;
+            margin: 10px;
+            width: 100%;
+            height: auto;
+        }
+
+        .eventos {
+            display: flex;
+            justify-content: center;
+        }
+
+        .contactos {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .formulario {
+            width: 70%;
+            height: auto;
+            margin: 20px;
+        }
+        .imagen{
+            width: 100%;
+            height: 70%;
+        }
+        .tarjeta{
+            height: 500px;
+            width: 40%;
+        }
+        .contenedor{
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+
+    <section class="container">
+        <div class="bg-white shadow rounded overflow-hidden">
+            <!--
+            px-4 relleno 
+             pb-5 alto 
+            -->
+            <div class="px-4 pt-0 pb-5 cover">
+                <div class="media align-items-end profile-head">
+                    <div class="profile mr-3">
+                        <img src="/img/perfil.png" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+                    </div>
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0">
+                            <%= user.nombre%>
+                                <%=user.apellido %>
+                        </h4>
+                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>
+                            <%= user.email %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="eventos">
+                <div class="px-4 py-3">
+
+                    <h3 class="mb-0">Tareas</h3>
+                    <div class="p-4 rounded shadow-sm bg-light">
+                        <% if(tareas.length){ %>
+                        <table class="table table-bordered  table-hover">
+                            <!--Cabecera de la tabla-->
+                            <thead>
+                                <!--Primera fila de la tabla-->
+                                <tr>
+                                    <!--Encabezados-->
+                                    <th scope="col">Titulo</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">URL</th>
+                                    <th scope="col">Creacion de la tarea</th>
+                                    <th scope="col">Operaciones</th>
+                                </tr>
+
+                            </thead>
+                            <!--Cuerpo de la tabla-->
+                            <tbody>
+                                
+                                    <h5>Hola <%=user.nombre%> tienes las siguientes actividades</h5>
+                                    <% tareas.forEach(function(tareas){%>
+                                        <tr>
+
+                                        <td>
+                                            <%=tareas.tarea%>
+                                        </td>
+                                        <td>
+                                            <%=tareas.descripcion%>
+                                        </td>
+                                        <td>
+                                            <%=tareas.fecha%>
+                                        </td>
+                                        <td>
+                                            <a href=<%=tareas.url%>><%=tareas.url%></a>
+                                            
+                                        </td>
+                                        <td>
+                                            <%=tareas.createdAt%>
+                                        </td>
+                                        <td>
+                                            <div class="m-0 row justify-conten-center">
+                                                <% if(tareas.done){ %>
+                                                    <a href="/echo/<%=tareas._id %>" class="btn  btn-success ">Realizado</a>
+                                                    <% }else {%>
+                                                        <a href="/echo/<%=tareas._id %>" class="btn btn-dark ">No Realizado</a>
+                                                        <% } %>
+                                                            <a href="/editar/<%=tareas._id %>"  class="btn btn-info">Editar</a>
+                                                            <a href="/eliminar/<%=tareas._id %>" class="btn btn-danger">Eliminar</a>
+                                            </div>
+                                          
+                                        </td>
+
+                                        </tr>
+
+                                        <% }) %>
+                                            <%}else{%>
+                                                <h3>No tienes ningun pendiente</h3>
+                                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3 class="mb-0">Clases</h3>
+                    <div class=" container p-4 rounded shadow-sm bg-light">
+                        <% if(clase.length){ %>
+                        <table class="table table-bordered  table-hover">
+                            <!--Cabecera de la tabla-->
+                            <thead class="table-dark">
+                                <!--Primera fila de la tabla-->
+                                <tr>
+                                    <!--Encabezados-->
+                                    <th scope="col">Materia</th>
+                                    <th scope="col">Profesor</th>
+                                    <th scope="col">Hora</th>
+                                    <th scope="col">Dias</th>
+                                    <th scope="col">Edificio</th>
+                                    <th scope="col">Aula</th>
+                                    <th scope="col">Operaciones</th>
+                                </tr>
+
+                            </thead>
+                            <!--Cuerpo de la tabla-->
+                            <tbody>
+                                
+                                    <h5>Hola <%=user.nombre%> tienes las siguientes calses </h5>
+                                    <% clase.forEach(function(clase){%>
+                                        <tr>
+
+                                        <td>
+                                            <%=clase.nombreclase%>
+                                        </td>
+                                        <td>
+                                            <%=clase.profesor%>
+                                        </td>
+                                        <td>
+                                            <%=clase.hora%>
+                                        </td>
+                                        <td>
+                                            <%=clase.dia%>
+                                            
+                                        </td>
+                                        <td>
+                                            <%=clase.edificio%>
+                                        </td>
+                                        <td>
+                                            <%=clase.aula%>
+                                        </td>
+                                        <td>
+                                            <% if(tareas.done){ %>
+                                                
+                                                <% }else {%>
+                                                  
+                                                    <% } %>
+                                                        <a href="/editarclase/<%=clase._id %>"  class="btn btn-info">Editar</a>
+                                                        <a href="/eliminarclase/<%=clase._id %>" class="btn btn-danger">Eliminar</a>
+                                        </td>
+
+                                        </tr>
+
+                                        <% }) %>
+                                            <%}else{%>
+                                                <h4>No tienes ninguna clase registrada</h4>
+                                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                   
+    
+                   
+                    <h3 class="mb-0">Registra un contacto</h3>
+                    <div class="contactos">
+                        <div class="formulario">
+                            <form action="/profile" method="POST">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                                    <input type="Titulo" name="nombre" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp">
+                                    <div id="emailHelp" class="form-text">Ingresa el nombre</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Apellido</label>
+                                    <input type="text" name="apellido" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Numero</label>
+                                    <input type="number" name="numero" class="form-control" id="exampleInputPassword1">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Registrar</button>
+                            </form>
+                        </div>
+                        <div class="contanedor-contactos">
+                            <div class="p-4 rounded shadow-sm bg-light">
+                                <ul>
+                                    <% if(contactos.length){ %>
+                                        <h5>Hola <%=user.nombre%> tus contactos son los siguientes</h5>
+                                        <% contactos.forEach(function(contactos){%>
+                                            <li class="list-group-item">
+                                                <h6>Nombre del contacto</h6>
+                                                <%=contactos.nombre%>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <h6>Appellido</h6>
+                                                <%=contactos.apellido%>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <h6>Numero</h6>
+                                                <%=contactos.numero%>
+                                            </li>
+                                            <a href="/editarcontacto/<%=contactos._id %>" class="btn btn-success">editar</a>
+                                            <a href="/eliminarcont/<%=contactos._id %>" class="btn btn-danger">Eliminar</a>
+                                            <% }) %>
+                                                <%}else{%>
+                                                    <h4>No tienes ningun contacto registrado</h4>
+                                                    <% } %>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <%- include('temp/footer'); %>

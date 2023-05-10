@@ -1,0 +1,45 @@
+<%- include('temp/cabecera'); %>
+<!--Concatenamos el numero de la tarea que se esta actualizando en la ruta-->
+<% tarea.forEach(function(tarea){%>
+
+  <style>
+    .editarcontenedor{
+       background-color: #dadada;
+       padding: 20px;
+       margin-right: 25%;
+       margin-left: 25%;
+       margin-top: 10%;
+   }
+   .seccion{
+     height: 1000px;
+   }
+  </style>
+  <section class="seccion">
+    <div class="editarcontenedor">
+      <h2>Datos a modificar</h2>
+      <form action="/editar/<%=tarea._id%>" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Titulo de la tarea</label>
+          <input type="Titulo" name="tarea" value="<%=tarea.tarea%>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Descripcion</label>
+          <input type="text" name="descripcion" value="<%=tarea.descripcion%>" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="row">
+          <div class="mb-3 col-sm-3">
+            <label for="exampleInputPassword1" class="form-label">Fecha limite</label>
+            <input type="date" name="fecha" value="<%=tarea.fecha%>"  class="form-control" id="exampleInputPassword1">
+            <div id="emailHelp" class="form-text">Es importante que ingreses la fecha nuevamente</div>
+          </div>
+          <div class="mb-2 col-sm-9">
+            <label for="exampleInputPassword1" class="form-label">Url</label>
+            <input type="url" name="url" value="<%=tarea.url%>" class="form-control" id="exampleInputPassword1">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+      </form>
+      <% }) %>
+    </div>
+  </section>
+<%- include('temp/footer'); %>

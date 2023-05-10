@@ -1,0 +1,40 @@
+<%- include('temp/cabecera'); %>
+  <% contacto.forEach(function(contacto){%>
+    <style>
+      .editarcontenedor {
+        background-color: #dadada;
+        padding: 20px;
+        margin-right: 25%;
+        margin-left: 25%;
+        margin-top: 10%;
+      }
+
+      .seccion {
+        height: 1000px;
+      }
+    </style>
+    <section class="seccion">
+      <div class="editarcontenedor">
+        <h2>Datos a modificar</h2>
+        <form action="/editarcontacto/<%=contacto._id%>" method="POST">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nombre</label>
+            <input type="Titulo" name="nombre" value="<%=contacto.nombre%>" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Apellido</label>
+            <input type="text" name="apellido" value="<%=contacto.apellido%>" class="form-control"
+              id="exampleInputPassword1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Apellido</label>
+            <input type="text" name="numero" value="<%=contacto.numero%>" class="form-control"
+              id="exampleInputPassword1">
+          </div>
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+        <% }) %>
+      </div>
+    </section>
+    <%- include('temp/footer'); %>

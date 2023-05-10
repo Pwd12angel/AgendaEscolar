@@ -1,0 +1,71 @@
+<%- include('temp/cabecera'); %>
+
+
+<div class="container" >
+  <h1 class="mt-4">Organizar</h1>
+<div class="mb-3">
+    <h3><%= user.nombre %> escribe la tarea que quieres guardar </h3>
+</div>
+  <form action="/organizar" method="POST">
+      
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Titulo de la tarea</label>
+      <input type="Titulo" name="tarea" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">Ingresa el titulo de la tarea es muy importante</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Descripcion</label>
+      <input type="text" name="descripcion" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="row">
+      <div class="mb-3 col-sm-3">
+        <label for="exampleInputPassword1" class="form-label">Fecha limite</label>
+        <input type="date" name="fecha" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="mb-2 col-sm-9">
+        <label for="exampleInputPassword1" class="form-label">Url</label>
+        <input type="URL" name="url" class="form-control" id="exampleInputPassword1">
+      </div>
+    </div>
+    <button type="submit" id="boton1" class="btn btn-primary">Enviar</button>
+  </form>
+
+  <h1 class="mt-4">Registrar clase</h1>
+  <h3><%= user.nombre %> escribe la clase que quieres guardar </h3>
+  <div class="mb-4">
+    <form action="/clase" method="POST">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nombre de la clase</label>
+        <input type="Titulo" name="nombreclase" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Ingresa el nombre de la clase</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Nombre del profesor</label>
+        <input type="text" name="profesor" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="row">
+        <div class="mb-3 col-sm-3">
+          <label for="exampleInputPassword1" class="form-label">Hora</label>
+          <input type="String" name="hora" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-2 col-sm-9">
+          <label for="exampleInputPassword1" class="form-label">Dia</label>
+          <input type="String" name="dia" class="form-control" id="exampleInputPassword1">
+        </div>
+      </div>
+      <div class="row">
+        <div class="mb-3 col-sm-3">
+          <label for="exampleInputPassword1" class="form-label">Edificio</label>
+          <input type="String" name="edificio" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-2 col-sm-9">
+          <label for="exampleInputPassword1" class="form-label">Aula</label>
+          <input type="String" name="aula" class="form-control" id="exampleInputPassword1">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<%- include('temp/footer'); %>
